@@ -34,7 +34,7 @@ export class UsersService {
     if (email === 'admin@example.com' && password === 'admin') {
       // If it's the admin user, return a custom Observable
       const adminUser: AuthenticationResponse = {
-        userID: 'admin_id',
+        userId: 'admin_id',
         personName: 'Admin',
         email: 'admin@example.com',
         gender: 'male', // Add the appropriate gender for the admin user
@@ -44,7 +44,7 @@ export class UsersService {
 
       return of(adminUser);
     } else {
-      return this.http.post<AuthenticationResponse>(`${this.usersAPIURL}auth/login`, { email, password });
+      return this.http.post<AuthenticationResponse>(`${this.usersAPIURL}User/login`, { email, password });
     }
   }
 

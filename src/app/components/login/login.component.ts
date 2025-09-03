@@ -31,7 +31,7 @@ export class LoginComponent {
       const { Email, Password } = this.loginForm.value;
       this.usersService.login(Email, Password).subscribe({
         next: (response: AuthenticationResponse) => {
-          if (response.userID == "admin_id") {
+          if (response.userId == "admin_id") {
             //admin user
             this.usersService.setAuthStatus(response, response.token, true, response.personName);
             this.router.navigate(['admin', 'products']);

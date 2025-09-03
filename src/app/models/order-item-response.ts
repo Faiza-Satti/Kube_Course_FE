@@ -1,8 +1,8 @@
 export interface OrderItemResponse {
-    productid: string;
-    unitprice: number;
+    productId: string;
+    unitPrice: number;
     quantity: number;
     totalPrice: number;
-    productname: string;
+    productName: string;
     category: string;
 }

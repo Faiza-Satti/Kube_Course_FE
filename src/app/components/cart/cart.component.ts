@@ -20,7 +20,7 @@ import { OrderResponse } from '../../models/order-response';
 })
 export class CartComponent {
   cartItems: CartItem[] = [];
-  displayedColumns = ['productname', 'unitprice', 'quantity'];
+  displayedColumns = ['productName', 'unitPrice', 'quantity'];
   cartItemsDataSource: MatTableDataSource<CartItem> = new MatTableDataSource<CartItem>([]);
 
   constructor(private cartService: CartService, public usersService: UsersService, private router: Router) {
@@ -41,7 +41,7 @@ export class CartComponent {
 
   // Function to decrease quantity (handle minimum quantity)
   decreaseQuantity(item: CartItem): void {
-    this.cartService.removeCartItem(item.productid);
+    this.cartService.removeCartItem(item.productId);
     this.cartItems = this.cartService.getCartItems();
     this.cartItemsDataSource = new MatTableDataSource<CartItem>(this.cartItems);
   }

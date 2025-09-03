@@ -20,7 +20,7 @@ import { OrderItemResponse } from '../../models/order-item-response';
 })
 export class AdminOrdersComponent {
   orders: OrderResponse[] = [];
-  displayedColumns = ['productname', 'unitprice', 'quantity', 'itemTotal'];
+  displayedColumns = ['productName', 'unitPrice', 'quantity', 'itemTotal'];
   cartItemsDataSource: MatTableDataSource<CartItem>[] = [];
   isLoaded: boolean = false;
 
@@ -41,9 +41,9 @@ export class AdminOrdersComponent {
           order.orderItems.forEach((orderItem : OrderItemResponse) => {
             
             var cartItem: CartItem = {
-              productid: orderItem.productid,
-              productname: orderItem.productname,
-              unitprice: orderItem.unitprice,
+              productId: orderItem.productId,
+              productName: orderItem.productName,
+              unitPrice: orderItem.unitPrice,
               quantity: orderItem.quantity,
               category: orderItem.category
             };

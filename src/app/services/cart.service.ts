@@ -21,7 +21,7 @@ export class CartService {
         var isFound: boolean = false;
         this.cart = this.cart.map(item => {
             //console.log(item.productid, cartItem.productid, item.productid == cartItem.productid);
-            if (item.productid == cartItem.productid) {
+            if (item.productId == cartItem.productId) {
                 item.quantity++;
                 isFound = true;
             }
@@ -41,7 +41,7 @@ export class CartService {
         //console.log(this.cart, productid);
 
         this.cart = this.cart.map(item => {
-            if (item.productid == productid) {
+            if (item.productId == productid) {
                 if (item.quantity > 1)
                     item.quantity--;
                 else
@@ -54,7 +54,7 @@ export class CartService {
 
         if (shouldRemoveItem) {
             this.cart = this.cart.filter(item => {
-                return item.productid != productid;
+                return item.productId != productid;
             })
         }
     }
@@ -69,14 +69,14 @@ export class CartService {
 
     newOrder(): Observable<OrderResponse> {
         var newOrderRequest: NewOrderRequest = {
-            userID: this.usersService.authResponse?.userID!,
+            userId: this.usersService.authResponse?.userId!,
             orderDate: new Date(),
             orderItems: []
         };
         this.cart.forEach(cartItem => {
             newOrderRequest.orderItems.push({
-                productid: cartItem.productid,
-                unitprice: cartItem.unitprice,
+                productid: cartItem.productId,
+                unitprice: cartItem.unitPrice,
                 quantity: cartItem.quantity
             });
         });
@@ -84,8 +84,8 @@ export class CartService {
         return this.http.post<OrderResponse>(`${this.ordersAPIURL}`, newOrderRequest);
     }
 
-    getOrdersByUserID(userID: string): Observable<OrderResponse[]> {
-        return this.http.get<OrderResponse[]>(`${this.ordersAPIURL}search/userid/${userID}`);
+    getOrdersByUserID(userId: string): Observable<OrderResponse[]> {
+        return this.http.get<OrderResponse[]>(`${this.ordersAPIURL}search/userid/${userId}`);
     }
 
     getOrders(): Observable<OrderResponse[]> {

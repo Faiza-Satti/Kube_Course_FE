@@ -21,7 +21,7 @@ import { OrderItemResponse } from '../../models/order-item-response';
 })
 export class OrdersComponent {
   orders: OrderResponse[] = [];
-  displayedColumns = ['productname', 'unitprice', 'quantity', 'itemTotal'];
+  displayedColumns = ['productName', 'unitPrice', 'quantity', 'itemTotal'];
   cartItemsDataSource: MatTableDataSource<CartItem>[] = [];
   isLoaded: boolean = false;
 
@@ -30,7 +30,7 @@ export class OrdersComponent {
 
   ngOnInit(): void {
     //console.log(this.usersService.authResponse);
-    this.cartService.getOrdersByUserID(this.usersService.authResponse?.userID!)
+    this.cartService.getOrdersByUserID(this.usersService.authResponse?.userId!)
       .subscribe({
         next: (response: OrderResponse[]) => {
           this.isLoaded = true;
@@ -42,9 +42,9 @@ export class OrdersComponent {
             order.orderItems.forEach((orderItem: OrderItemResponse) => {
 
               var cartItem: CartItem = {
-                productid: orderItem.productid,
-                productname: orderItem.productname,
-                unitprice: orderItem.unitprice,
+                productId: orderItem.productId,
+                productName: orderItem.productName,
+                unitPrice: orderItem.unitPrice,
                 quantity: orderItem.quantity,
                 category: orderItem.category
               };
